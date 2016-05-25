@@ -1,2 +1,2 @@
 # Sample-MaxChat-Android
-敬请期待。。。
+内测中，敬请期待。。。

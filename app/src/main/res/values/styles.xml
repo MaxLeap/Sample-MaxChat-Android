@@ -1,0 +1,106 @@
+<resources>
+
+ <!-- Base application theme. -->
+ <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <!-- Customize your theme here. -->
+  <item name="colorPrimary">@color/colorPrimary</item>
+  <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+  <item name="colorAccent">@color/colorAccent</item>
+ </style>
+
+
+ <!--android:layout_width="0dp" android:layout_height="match_parent"
+ android:layout_weight="1"
+ android:text="个人信息"
+ android:textSize="16sp"
+ android:textColor="@android:color/black"
+ android:drawableTop="@mipmap/person"
+ android:drawablePadding="5dp"
+ android:button="@null"
+ android:gravity="center"
+ android:checked="false"-->
+
+
+ <style name="BootRadioButtonStyle">
+  <item name="android:layout_width">0dp</item>
+  <item name="android:layout_height">match_parent</item>
+  <item name="android:layout_weight">1</item>
+  <item name="android:textSize">14sp</item>
+  <item name="android:textColor">@color/selector_main_text</item>
+  <item name="android:drawablePadding">1dp</item>
+  <item name="android:button">@null</item>
+  <item name="android:gravity">center</item>
+ </style>
+
+
+ <style name="TopTitleTextStyle">
+  <item name="android:layout_width">wrap_content</item>
+  <item name="android:layout_height">wrap_content</item>
+  <item name="android:textSize">16sp</item>
+  <item name="android:textColor">@android:color/white</item>
+ </style>
+
+
+ <style name="Dialog" parent="android:style/Theme.Dialog">
+  <item name="android:background">#00000000</item>
+  <item name="android:windowBackground">@android:color/transparent</item>
+  <item name="android:windowNoTitle">true</item>
+  <item name="android:windowIsFloating">true</item>
+ </style>
+
+
+
+ <style name="PhotoDialog" parent="android:style/Theme.Dialog">
+  <item name="android:background">#00000000</item>
+  <item name="android:windowBackground">@android:color/transparent</item>
+  <item name="android:windowNoTitle">true</item>
+  <item name="android:windowIsFloating">true</item>
+  <item name="android:windowAnimationStyle">@style/PhotoDialogAnim</item>
+ </style>
+
+
+
+ <style name="PhotoDialogAnim">
+  <item name="android:windowEnterAnimation">@anim/input_method_enter</item>
+  <!-- 进入动画 -->
+  <item name="android:windowExitAnimation">@anim/input_method_exit</item>
+  <!-- 退出动画 -->
+ </style>
+
+
+ <style name="PhotoDialogActivityStyle" parent="@android:style/Theme.Dialog">
+
+  <!-- 去黑边 -->
+  <item name="android:windowFrame">@null</item>
+  <!-- 设置是否可滑动 -->
+  <item name="android:windowIsFloating">true</item>
+  <!-- 设置是否透明 -->
+  <item name="android:windowIsTranslucent">true</item>
+  <!-- 无标题 -->
+  <item name="android:windowNoTitle">true</item>
+  <!-- 背景 -->
+  <item name="android:background">@null</item>
+  <!-- 窗口背景 -->
+  <item name="android:windowBackground">@android:color/transparent</item>
+  <!-- 是否变暗 -->
+  <item name="android:backgroundDimEnabled">true</item>
+  <!-- 点击空白部分activity不消失 -->
+  <item name="android:windowCloseOnTouchOutside">true</item>
+ </style>
+
+
+
+ <style name="PopupAnimation" mce_bogus="1" parent="android:Animation">
+  <item name="android:windowEnterAnimation">@anim/activity_translate_in</item>
+  <item name="android:windowExitAnimation">@anim/activity_translate_out</item>
+ </style>
+
+ <style name="PopupAnimation1" parent="android:Animation" mce_bogus="1">
+  <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+  <item name="android:windowExitAnimation">@anim/popup_exit</item>
+ </style>
+
+
+
+
+</resources>

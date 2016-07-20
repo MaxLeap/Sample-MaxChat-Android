@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "cn.maxleap.chatdemo"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile('io.socket:socket.io-client:0.6.3') {
+        exclude group: 'org.json', module: 'json'
+    }
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    compile fileTree(dir: 'libs', include: 'maxleap-*.jar')
+    compile files('libs/maxleap-sdk-qq-v0.9.9.jar')
+    compile files('libs/maxleap-sdk-wechat-v0.9.9.jar')
+    compile files('libs/maxleap-sdk-weibo-v0.9.9.jar')
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile(name: 'mod-core-release', ext: 'aar')
+    compile(name: 'mod-support-release', ext: 'aar')
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'in.srain.cube:ultra-ptr:1.0.10'
+    compile 'com.android.support:design:23.0.1'
+    //compile 'org.kymjs.kjframe:kjframe:2.4.6.2'
+    compile project(':chat')
+}

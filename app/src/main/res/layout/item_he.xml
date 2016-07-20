@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingBottom="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="80dp"
+                android:paddingTop="10dp">
+ <ImageView android:id="@+id/chatlist_image_other" android:layout_width="40dp"
+            android:layout_height="40dp" android:layout_alignParentLeft="true"
+            android:layout_marginRight="5dp" android:background="@mipmap/non_person"/>
+ <TextView android:id="@+id/chatlist_text_other" android:layout_width="wrap_content"
+           android:layout_height="wrap_content" android:layout_alignTop="@id/chatlist_image_other"
+           android:layout_toRightOf="@id/chatlist_image_other" android:background="@mipmap/bg_he"
+           android:paddingBottom="18dip" android:paddingTop="13dp"
+           android:text="hewdfb"/>
+</RelativeLayout>

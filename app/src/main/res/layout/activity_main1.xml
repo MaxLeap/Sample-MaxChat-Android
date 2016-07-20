@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+>
+ <include layout="@layout/title_bar"
+ />
+
+ <FrameLayout android:id="@+id/fl_home"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+ />
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+ <RadioGroup android:id="@+id/rg_home" android:layout_width="match_parent"
+             android:layout_height="60dp"
+             android:layout_marginBottom="2dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="5dp"
+ >
+
+  <RadioButton
+   android:id="@+id/rb_person"
+   style="@style/BootRadioButtonStyle"
+   android:checked="false"
+   android:drawableTop="@mipmap/person"
+   android:text="个人信息"/>
+  <RadioButton
+   android:id="@+id/rb_contacts"
+   style="@style/BootRadioButtonStyle"
+   android:checked="false"
+   android:drawableTop="@mipmap/contacts"
+   android:text="联系人"/>
+  <RadioButton
+   android:id="@+id/rb_recenttalk"
+   style="@style/BootRadioButtonStyle"
+   android:checked="false"
+   android:drawableTop="@mipmap/recenttalk"
+   android:text="最近聊天"/>
+  <RadioButton
+   android:id="@+id/rb_friendcircle"
+   style="@style/BootRadioButtonStyle"
+   android:checked="false"
+   android:drawableTop="@mipmap/friendcircle"
+   android:text="朋友圈"/>
+  <RadioButton
+   android:id="@+id/rb_setting"
+   style="@style/BootRadioButtonStyle"
+   android:checked="false"
+   android:drawableTop="@mipmap/setting"
+   android:text="设置"/>
+
+ </RadioGroup>
+
+
+</LinearLayout>

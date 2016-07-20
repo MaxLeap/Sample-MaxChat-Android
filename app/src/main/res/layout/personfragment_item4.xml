@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/person_image"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="10dp"
+>
+
+ <TextView
+           style="@style/TopTitleTextStyle"
+           android:layout_weight="1"
+           android:text="头像"
+           android:textColor="@android:color/black"
+           android:layout_centerVertical="true"
+ />
+
+
+ <ImageView android:layout_width="30dp"
+            android:layout_height="30dp"
+           android:id="@+id/iv_person_pic"
+         android:layout_toLeftOf="@+id/rightarrow"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/non_person"
+ />
+
+
+ <ImageView android:id="@+id/rightarrow" android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rightarrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+ />
+
+
+</RelativeLayout>

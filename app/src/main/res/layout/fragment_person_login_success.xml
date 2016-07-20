@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_login_success"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:visibility="gone">
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="#cccccc"
+ />
+
+ <!--<ListView android:id="@+id/listview" android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:cacheColorHint="@android:color/transparent"
+           android:divider="#cccccc"
+           android:dividerHeight="1dp"
+           android:padding="6dp"
+ />-->
+
+ <include layout="@layout/personfragment_item"/>
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_marginLeft="15dp"
+ />
+ <include layout="@layout/personfragment_item2"/>
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_marginLeft="15dp"
+ />
+ <include layout="@layout/personfragment_item3"/>
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_marginLeft="15dp"
+ />
+ <include layout="@layout/personfragment_item4"/>
+
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+
+</LinearLayout>

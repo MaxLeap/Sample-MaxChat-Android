@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/shape_popup"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:layout_margin="20dp"
+
+>
+
+ <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+           android:paddingLeft="20dp"
+           android:paddingRight="20dp"
+           android:paddingTop="20dp"
+           android:text="请输入您要添加的好友的名字"
+           android:textColor="@android:color/black"
+           android:textSize="14sp"
+           android:id="@+id/tv_title"
+ />
+
+ <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="30dp"
+                 android:layout_marginTop="15dp"
+                 android:paddingLeft="20dp"
+                 android:paddingRight="20dp">
+
+
+  <ImageView android:layout_width="match_parent" android:layout_height="30dp"
+             android:background="@drawable/shap_dialog"
+  />
+  <EditText
+   android:id="@+id/et_add_friend"
+   android:layout_width="match_parent" android:layout_height="30dp"
+   android:background="@null"
+   android:textColor="@android:color/black"
+   android:ems="10"
+   android:paddingLeft="5dp"
+  />
+
+ </RelativeLayout>
+
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="9dp"
+            android:background="#cccccc"
+ />
+
+ <LinearLayout android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+ >
+
+  <Button android:id="@+id/btn_ok" android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/white"
+          android:text="Ok"
+          android:textColor="@android:color/holo_blue_bright"
+          android:textSize="14sp"
+          android:layout_gravity="center"
+  />
+
+  <ImageView android:layout_width="1dp" android:layout_height="match_parent"
+             android:background="#cccccc"
+  />
+
+
+  <Button android:id="@+id/btn_cancle" android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/white"
+          android:text="Cancle"
+          android:textColor="@android:color/holo_blue_bright"
+          android:textSize="14sp"
+          android:layout_gravity="center"
+  />
+
+ </LinearLayout>
+
+</LinearLayout>

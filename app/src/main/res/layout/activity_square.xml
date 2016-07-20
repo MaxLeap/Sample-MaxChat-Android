@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+ <include layout="@layout/title_bar"/>
+
+ <in.srain.cube.views.ptr.PtrClassicFrameLayout
+  xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/store_house_ptr_frame"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+
+  cube_ptr:ptr_duration_to_close="300"
+  cube_ptr:ptr_duration_to_close_header="2000"
+  cube_ptr:ptr_keep_header_when_refresh="true"
+  cube_ptr:ptr_pull_to_fresh="false"
+  cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+  cube_ptr:ptr_resistance="1.7"
+ >
+
+  <LinearLayout
+   android:id="@+id/store_house_ptr_image_content"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="@android:color/white"
+   android:clickable="true"
+   android:padding="10dp"
+   android:orientation="vertical"
+  >
+   <ListView android:id="@+id/square_listview" android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:cacheColorHint="@android:color/transparent"
+             android:divider="#99cccccc"
+             android:dividerHeight="1dp"
+             android:layout_marginTop="10dp"
+             android:listSelector="@android:color/transparent"
+   />
+
+  </LinearLayout>
+
+ </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+</LinearLayout>

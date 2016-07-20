@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:gravity="center_horizontal"
+>
+
+ <Button android:id="@+id/btn_photo" android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/shape_popup_top"
+         android:gravity="center"
+         android:layout_gravity="center"
+         android:text="退出群组"
+         android:textColor="@android:color/holo_blue_bright"
+         android:textSize="14sp"
+         android:padding="15dp"
+ />
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+ <Button android:id="@+id/btn_xiangce" android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/shape_popup_bottem"
+         android:gravity="center"
+         android:text="添加成员"
+         android:layout_gravity="center"
+         android:textColor="@android:color/holo_blue_bright"
+         android:textSize="14sp"
+         android:padding="15dp"
+
+ />
+
+ <ImageView android:layout_width="match_parent" android:layout_height="8dp"
+            android:background="@android:color/transparent"
+ />
+ <Button android:id="@+id/btn_cancle" android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/shape_popup"
+         android:gravity="center"
+         android:text="取消"
+         android:textColor="@android:color/holo_blue_bright"
+         android:textSize="14sp"
+         android:layout_gravity="center"
+         android:padding="15dp"
+ />
+ <ImageView android:layout_width="match_parent" android:layout_height="5dp"
+            android:background="@android:color/transparent"
+ />
+
+</LinearLayout>

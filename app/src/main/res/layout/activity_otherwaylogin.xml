@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+>
+
+ <include layout="@layout/title_bar"/>
+
+
+ <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:padding="8dp"
+ >
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="手机号"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+  />
+  <EditText android:id="@+id/et_username" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:paddingLeft="100dp"
+            android:inputType="number"
+
+  />
+
+ </RelativeLayout>
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+
+ <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:padding="8dp"
+ >
+
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="验证码"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+
+  />
+  <EditText android:id="@+id/et_password" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingLeft="100dp"
+
+  />
+  <Button android:id="@+id/btn_yanzhengma" android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="获取验证码"
+          android:textColor="@android:color/white"
+          android:textSize="16sp"
+          android:layout_alignParentRight="true"
+          android:background="@drawable/selector_yanzhengma_button"
+          android:enabled="false"
+  />
+
+  <Button android:id="@+id/btn_time" android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="60 s"
+          android:textColor="@android:color/white"
+          android:textSize="16sp"
+          android:layout_alignParentRight="true"
+          android:background="#cccccc"
+          android:visibility="gone"
+  />
+
+
+ </RelativeLayout>
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:text="未注册过的手机将自动创建为MaxChat用户"
+           android:textSize="14sp"
+           android:textColor="#8000"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="25dp"
+ />
+
+ <Button android:id="@+id/btn_login" android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"
+         android:layout_marginTop="50dp"
+         android:background="@drawable/selector_login_button"
+         android:enabled="false"
+         android:text="验证并登录"
+         android:textColor="@android:color/white"
+         android:textSize="16sp"
+ />
+
+ <include layout="@layout/third_way_login"/>
+
+</LinearLayout>

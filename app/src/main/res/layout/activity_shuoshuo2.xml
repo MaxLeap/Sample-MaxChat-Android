@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+ <include layout="@layout/title_bar"/>
+
+ <LinearLayout android:layout_width="match_parent"
+               android:layout_height="250dp"
+               android:orientation="vertical"
+ >
+  <EditText android:id="@+id/et_shuoshuo" android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:gravity="top|left"
+            android:hint="@string/shuoshuo"
+            android:singleLine="false"
+            android:textColor="@android:color/black"
+  />
+
+  <GridView
+   android:id="@+id/gridView1"
+   android:layout_width="290dp"
+   android:layout_height="300dp"
+   android:layout_marginLeft="5dp"
+   android:horizontalSpacing="3dp"
+   android:numColumns="4"
+   android:scrollbars="none"
+   android:verticalSpacing="5dp">
+  </GridView>
+
+ </LinearLayout>
+
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+
+ <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center_horizontal"
+                 android:padding="8dp"
+ >
+
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="发布到广场"
+            android:textColor="@android:color/black"
+
+            android:textSize="18sp"
+  />
+
+  <Switch android:id="@+id/st_toggle" android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:textOn="开启"
+          android:textOff="关闭"
+          android:textColor="@android:color/black"
+          android:layout_centerVertical="true"
+  />
+ </RelativeLayout>
+
+ <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#cccccc"
+ />
+
+</LinearLayout>

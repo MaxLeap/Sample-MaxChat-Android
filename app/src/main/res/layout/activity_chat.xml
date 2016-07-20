@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+ <include layout="@layout/title_bar"
+ />
+
+ <ListView android:id="@+id/chat_listview" android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:cacheColorHint="@android:color/transparent"
+           android:dividerHeight="5dp"
+           android:divider="@android:color/transparent"
+ />
+ <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
+               android:orientation="horizontal"
+               android:gravity="center_vertical"
+               android:padding="5dp"
+ >
+  <ImageView android:id="@+id/iv_add" android:layout_width="30dp"
+             android:layout_height="30dp"
+             android:scaleType="centerCrop"
+             android:src="@mipmap/add"
+             android:layout_marginRight="5dp"
+  />
+
+  <EditText android:layout_width="0dp" android:layout_height="40dp"
+            android:background="@drawable/shape_et"
+            android:layout_weight="1"
+            android:id="@+id/et_send"
+  />
+  <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:text="发送"
+          android:textSize="16sp"
+          android:textColor="@android:color/holo_blue_light"
+          android:layout_marginLeft="5dp"
+          android:id="@+id/btn_send"
+  />
+
+ </LinearLayout>
+
+</LinearLayout>

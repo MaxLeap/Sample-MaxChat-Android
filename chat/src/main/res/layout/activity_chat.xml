@@ -3,26 +3,50 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
+ <RelativeLayout android:layout_width="match_parent" android:layout_height="45dp"
+                 android:background="#7cd12e"
+                 android:clipToPadding="true"
+                 android:fitsSystemWindows="true"
+                 android:padding="8dp"
+ >
+  <TextView android:id="@+id/tv_back" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:text="返回"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+  />
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="18627801539"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_center"
+  />
 
-    <ListView
-        android:id="@+id/chat_listview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:dividerHeight="3dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:transcriptMode="normal"/>
+ </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#7fd8d8d8"/>
+ <ListView
+  android:id="@+id/chat_listview"
+  android:layout_width="match_parent"
+  android:layout_height="0dp"
+  android:layout_weight="1"
+  android:cacheColorHint="#00000000"
+  android:divider="@null"
+  android:dividerHeight="3dp"
+  android:scrollbarStyle="outsideOverlay"
+  android:transcriptMode="normal"/>
 
-    <org.kymjs.chat.widget.KJChatKeyboard
-        android:id="@+id/chat_msg_input_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+ <View
+  android:layout_width="match_parent"
+  android:layout_height="1dp"
+  android:background="#7fd8d8d8"/>
+
+ <org.kymjs.chat.widget.KJChatKeyboard
+  android:id="@+id/chat_msg_input_box"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"/>
 
 </LinearLayout>

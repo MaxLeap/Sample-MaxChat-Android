@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.kymjs.chat.adapter.ChatAdapter;
 import org.kymjs.chat.bean.Emojicon;
@@ -47,24 +48,52 @@ import java.util.Random;
  */
 public class ChatActivity extends KJActivity {
 
-    public static final int REQUEST_CODE_GETIMAGE_BYSDCARD = 0x1;
+    //public static final int REQUEST_CODE_GETIMAGE_BYSDCARD = 0x1;
 
     private KJChatKeyboard box;
     private ListView mRealListView;
 
+    private static final String PATH_KU = "/mnt/sdcard/"+System.currentTimeMillis()+".jpg";
+
+
+    private static final int REQUEST_CODE_PHOTO_KU = 100;
+    private static final int REQUEST_CODE_XIANGCE_KU = 101;
+
     List<Message> datas = new ArrayList<Message>();
     private ChatAdapter adapter;
+    private TextView tv_back;
+    private TextView tv_center;
 
     @Override
     public void setRootView() {
         setContentView(R.layout.activity_chat);
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintResource(R.color.statucolor);
+        tintManager.setStatusBarTintEnabled(true);
     }
 
     @Override
     public void initWidget() {
         super.initWidget();
-        box = (KJChatKeyboard) findViewById(R.id.chat_msg_input_box);
         mRealListView = (ListView) findViewById(R.id.chat_listview);
+        tv_back = (TextView) findViewById(R.id.tv_back);
+        tv_center = (TextView) findViewById(R.id.tv_center);
+
+        tv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (box.isShow()){
+                    box.hideLayout();
+                    return;
+                }else{
+                    ChatActivity.this.finish();
+                     sendCustomBroadcaster();
+                }
+
+            }
+        });
+
+        box = (KJChatKeyboard) findViewById(R.id.chat_msg_input_box);
 
         mRealListView.setSelector(android.R.color.transparent);
         initMessageInputToolBox();
@@ -72,6 +101,7 @@ public class ChatActivity extends KJActivity {
     }
 
     private void initMessageInputToolBox() {
+
         box.setOnOperationListener(new OnOperationListener() {
             @Override
             public void send(String content) {
@@ -80,7 +110,7 @@ public class ChatActivity extends KJActivity {
                         "avatar", content, true, true, new Date());
                 datas.add(message);
                 adapter.refresh(datas);
-                createReplayMsg(message);
+                //createReplayMsg(message);
             }
 
             @Override
@@ -90,16 +120,20 @@ public class ChatActivity extends KJActivity {
                         Date());
                 datas.add(message);
                 adapter.refresh(datas);
-                createReplayMsg(message);
+                //createReplayMsg(message);
             }
 
             @Override
             public void selectedEmoji(Emojicon emoji) {
+
                 box.getEditTextBox().append(emoji.getValue());
             }
 
             @Override
             public void selectedBackSpace(Emojicon back) {
+                if(box==null){
+                    return;
+                }
                 DisplayRules.backspace(box.getEditTextBox());
             }
 
@@ -111,9 +145,12 @@ public class ChatActivity extends KJActivity {
                         break;
                     case 1:
                         ViewInject.toast("跳转相机");
+                        goToCamera();
                         break;
                 }
             }
+
+
         });
 
         List<String> faceCagegory = new ArrayList<>();
@@ -130,6 +167,18 @@ public class ChatActivity extends KJActivity {
 
         box.setFaceData(faceCagegory);
         mRealListView.setOnTouchListener(getOnTouchListener());
+    }
+
+    /**
+     * 跳转相机
+     */
+    private void goToCamera() {
+        Intent imageCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        imageCaptureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                Uri.fromFile(new File(PATH_KU)));// /mnt/sdcard/test.jpg 是照片存储目录
+        //getContext().startActivityForResult(imageCaptureIntent, RESULT_CAPTURE_IMAGE);
+        startActivityForResult(imageCaptureIntent, REQUEST_CODE_PHOTO_KU);
+
     }
 
     private void initListView() {
@@ -157,12 +206,12 @@ public class ChatActivity extends KJActivity {
                 Message.MSG_STATE_SENDING, "Tom", "avatar", "Jerry", "avatar",
                 "<a href=\"http://kymjs.com\">自定义链接</a>也是支持的", true, true, new Date(System.currentTimeMillis()
                 - (1000 * 60 * 60 * 24) * 6));
-
+/*
         datas.add(message);
         datas.add(message1);
         datas.add(message2);
         datas.add(message6);
-        datas.add(message7);
+        datas.add(message7);*/
 
         adapter = new ChatAdapter(this, datas, getOnChatItemClickListener());
         mRealListView.setAdapter(adapter);
@@ -195,11 +244,22 @@ public class ChatActivity extends KJActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && box.isShow()) {
+
             box.hideLayout();
             return true;
         } else {
+
+            sendCustomBroadcaster();
             return super.onKeyDown(keyCode, event);
         }
+    }
+
+    /**
+     * 发送自定义广播
+     */
+    private void sendCustomBroadcaster() {
+        Intent intent = new Intent("cn.maxleap.chatdemo");
+        sendBroadcast(intent);
     }
 
     /**
@@ -212,13 +272,13 @@ public class ChatActivity extends KJActivity {
             intent.setAction(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             startActivityForResult(Intent.createChooser(intent, "选择图片"),
-                    REQUEST_CODE_GETIMAGE_BYSDCARD);
+                    REQUEST_CODE_XIANGCE_KU);
         } else {
             intent = new Intent(Intent.ACTION_PICK,
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intent.setType("image/*");
             startActivityForResult(Intent.createChooser(intent, "选择图片"),
-                    REQUEST_CODE_GETIMAGE_BYSDCARD);
+                    REQUEST_CODE_PHOTO_KU);
         }
 
     }
@@ -229,7 +289,7 @@ public class ChatActivity extends KJActivity {
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
-        if (requestCode == REQUEST_CODE_GETIMAGE_BYSDCARD) {
+        if (requestCode == REQUEST_CODE_XIANGCE_KU) {
             Uri dataUri = data.getData();
             if (dataUri != null) {
                 File file = FileUtils.uri2File(aty, dataUri);
@@ -240,6 +300,17 @@ public class ChatActivity extends KJActivity {
                 adapter.refresh(datas);
             }
         }
+        if(requestCode==REQUEST_CODE_PHOTO_KU&&resultCode==Activity.RESULT_OK){
+            System.out.println("小李子");
+                Message message = new Message(Message.MSG_TYPE_PHOTO, Message.MSG_STATE_SUCCESS,
+                        "Tom", "avatar", "Jerry",
+                        "avatar", PATH_KU, true, true, new Date());
+                datas.add(message);
+                adapter.refresh(datas);
+        }
+
+
+
     }
 
     /**

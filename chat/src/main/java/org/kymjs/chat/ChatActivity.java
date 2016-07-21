@@ -144,7 +144,6 @@ public class ChatActivity extends KJActivity {
                         goToAlbum();
                         break;
                     case 1:
-                        ViewInject.toast("跳转相机");
                         goToCamera();
                         break;
                 }
@@ -278,7 +277,7 @@ public class ChatActivity extends KJActivity {
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             intent.setType("image/*");
             startActivityForResult(Intent.createChooser(intent, "选择图片"),
-                    REQUEST_CODE_PHOTO_KU);
+                    REQUEST_CODE_XIANGCE_KU);
         }
 
     }
@@ -301,7 +300,6 @@ public class ChatActivity extends KJActivity {
             }
         }
         if(requestCode==REQUEST_CODE_PHOTO_KU&&resultCode==Activity.RESULT_OK){
-            System.out.println("小李子");
                 Message message = new Message(Message.MSG_TYPE_PHOTO, Message.MSG_STATE_SUCCESS,
                         "Tom", "avatar", "Jerry",
                         "avatar", PATH_KU, true, true, new Date());

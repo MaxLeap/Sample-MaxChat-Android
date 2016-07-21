@@ -17,6 +17,7 @@ import com.maxleap.LogInCallback;
 import com.maxleap.MLQQUtils;
 import com.maxleap.MLUser;
 import com.maxleap.MLUserManager;
+import com.maxleap.MLWeiboUtils;
 import com.maxleap.RequestSmsCodeCallback;
 import com.maxleap.exception.MLException;
 
@@ -77,6 +78,9 @@ public class OtherwayLoginActivity extends AppCompatActivity implements View.OnC
 
         mRightText.setOnClickListener(this);
         btn_login.setOnClickListener(this);
+        qq_login.setOnClickListener(this);
+        weibo_login.setOnClickListener(this);
+        wechat_login.setOnClickListener(this);
 
         btn_yanzhengma.setOnClickListener(this);
 
@@ -200,22 +204,45 @@ public class OtherwayLoginActivity extends AppCompatActivity implements View.OnC
 
     // TODO: 16/7/8  
     private void weiboLogin() {
+
+        MLWeiboUtils.logInInBackground(OtherwayLoginActivity.this, new LogInCallback() {
+            @Override
+            public void done(MLUser mlUser, MLException e) {
+                if (mlUser == null) {
+                    //用户取消了使用微博账号登录
+                    System.out.println("用户取消了微博登录");
+                } else if (mlUser.isNew()) {
+                    //用户第一次使用微博账号登录，成功注册并绑定user用户
+                    System.out.println("用户第一次使用微博");
+                } else {
+                    //用户使用微博账号登录成功。
+                    System.out.println("用户登录成功");
+                }
+            }
+        });
+
     }
 
     //TODO: 16/7/8  
     private void qqLogin() {
 
-        MLQQUtils.logInInBackground(this, new LogInCallback() {
+        MLQQUtils.logInInBackground(OtherwayLoginActivity.this, new LogInCallback() {
             @Override
             public void done(MLUser user, MLException err) {
                 if (user == null) {
+                    System.out.println("用户取消了登录");
+                    Toast.makeText(getApplicationContext(),"取消登录",Toast.LENGTH_SHORT).show();
+
                     //用户取消了使用QQ账号登录
                 } else if (user.isNew()) {
                     //用户第一次使用QQ账号登录，成功注册并绑定user用户
+                    Toast.makeText(getApplicationContext(),"绑定用户",Toast.LENGTH_SHORT).show();
+                    System.out.println("绑定用户");
                 } else {
                     //用户使用QQ账号登录成功
 
                     Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
+                    System.out.println("登录成功");
                 }
             }
         });

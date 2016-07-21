@@ -72,6 +72,25 @@
 
   <activity android:name="org.kymjs.chat.ChatActivity"/>
 
+  <activity android:name="com.tencent.tauth.AuthActivity">
+   <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="tencent1105558294" />
+   </intent-filter>
+
+  </activity>
+
+  <activity
+   android:name="com.tencent.connect.common.AssistActivity"
+   android:screenOrientation="behind"
+   android:theme="@android:style/Theme.Translucent.NoTitleBar"
+   android:configChanges="orientation|keyboardHidden">
+  </activity>
+
+
+
 
   <meta-data
    android:name="ml_channel"

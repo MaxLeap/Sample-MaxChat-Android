@@ -41,16 +41,17 @@ dependencies {
     }
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile fileTree(dir: 'libs', include: 'maxleap-*.jar')
-    compile files('libs/maxleap-sdk-qq-v0.9.9.jar')
     compile files('libs/maxleap-sdk-wechat-v0.9.9.jar')
-    compile files('libs/maxleap-sdk-weibo-v0.9.9.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile(name: 'mod-core-release', ext: 'aar')
     compile(name: 'mod-support-release', ext: 'aar')
+    compile(name: 'mod-qq-release', ext: 'aar')
+    compile(name: 'mod-weibo-release', ext: 'aar')
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'in.srain.cube:ultra-ptr:1.0.10'
     compile 'com.android.support:design:23.0.1'
     //compile 'org.kymjs.kjframe:kjframe:2.4.6.2'
     compile project(':chat')
+
 }

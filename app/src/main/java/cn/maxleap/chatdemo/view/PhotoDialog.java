@@ -17,7 +17,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.io.File;
 
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.PhotoEvent;
+import cn.maxleap.chatdemo.event.PhotoEvent;
 import cn.maxleap.chatdemo.utils.DeviceInfo;
 
 public class PhotoDialog extends Dialog implements View.OnClickListener{

@@ -53,5 +53,5 @@ dependencies {
     compile 'com.android.support:design:23.0.1'
     //compile 'org.kymjs.kjframe:kjframe:2.4.6.2'
     compile project(':chat')
-
+    compile files('libs/badgeview.jar')
 }

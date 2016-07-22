@@ -20,7 +20,7 @@ import com.maxleap.exception.MLException;
 import org.greenrobot.eventbus.EventBus;
 
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.MessageEvent;
+import cn.maxleap.chatdemo.event.MessageEvent;
 import cn.maxleap.chatdemo.global.Contants;
 import cn.maxleap.chatdemo.utils.PrefUtils;
 import cn.maxleap.chatdemo.utils.UiUtils;

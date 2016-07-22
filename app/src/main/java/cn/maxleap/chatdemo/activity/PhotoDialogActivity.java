@@ -17,8 +17,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.io.File;
 
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.PhotoEvent;
-import cn.maxleap.chatdemo.entiry.XiangCeEvent;
+import cn.maxleap.chatdemo.event.PhotoEvent;
+import cn.maxleap.chatdemo.event.XiangCeEvent;
 import cn.maxleap.chatdemo.utils.DeviceInfo;
 
 

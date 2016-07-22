@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.ShuoShuoPhotoEvent;
-import cn.maxleap.chatdemo.entiry.ShuoShuoXiangCeEvent;
+import cn.maxleap.chatdemo.event.ShuoShuoPhotoEvent;
+import cn.maxleap.chatdemo.event.ShuoShuoXiangCeEvent;
 import cn.maxleap.chatdemo.utils.UiUtils;
 
 public class ShuoShuoActivity extends AppCompatActivity implements View.OnClickListener {

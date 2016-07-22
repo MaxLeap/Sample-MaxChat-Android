@@ -20,12 +20,12 @@ import java.util.List;
 
 import cn.maxleap.chatdemo.activity.PhotoDialogActivity;
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.LogOutEvent;
-import cn.maxleap.chatdemo.entiry.MessageEvent;
-import cn.maxleap.chatdemo.entiry.NiChenBackDialogEvent;
-import cn.maxleap.chatdemo.entiry.NiChenEvent;
-import cn.maxleap.chatdemo.entiry.PhotoEvent;
-import cn.maxleap.chatdemo.entiry.XiangCeEvent;
+import cn.maxleap.chatdemo.event.LogOutEvent;
+import cn.maxleap.chatdemo.event.MessageEvent;
+import cn.maxleap.chatdemo.event.NiChenBackDialogEvent;
+import cn.maxleap.chatdemo.event.NiChenEvent;
+import cn.maxleap.chatdemo.event.PhotoEvent;
+import cn.maxleap.chatdemo.event.XiangCeEvent;
 import cn.maxleap.chatdemo.global.Contants;
 import cn.maxleap.chatdemo.utils.PrefUtils;
 import cn.maxleap.chatdemo.utils.UiUtils;

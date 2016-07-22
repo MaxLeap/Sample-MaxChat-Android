@@ -19,7 +19,7 @@ import cn.maxleap.chatdemo.activity.MyFriendCircleActivity;
 import cn.maxleap.chatdemo.activity.MyShuoShuoActivity;
 import cn.maxleap.chatdemo.activity.SquareActivity;
 import cn.maxleap.chatdemo.adapter.FriendCircleFragmentAdapter;
-import cn.maxleap.chatdemo.entiry.FriendCircleEvent;
+import cn.maxleap.chatdemo.event.FriendCircleEvent;
 import cn.maxleap.chatdemo.global.Contants;
 import cn.maxleap.chatdemo.utils.PrefUtils;
 

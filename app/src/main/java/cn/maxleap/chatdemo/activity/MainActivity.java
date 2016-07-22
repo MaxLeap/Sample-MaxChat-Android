@@ -10,22 +10,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jauker.widget.BadgeView;
 import com.maxleap.MLUser;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import cn.maxleap.chatdemo.R;
 import cn.maxleap.chatdemo.activity2.ShuoActivity;
-import cn.maxleap.chatdemo.entiry.FriendCircleEvent;
-import cn.maxleap.chatdemo.entiry.LogOutEvent;
-import cn.maxleap.chatdemo.entiry.MessageEvent;
-import cn.maxleap.chatdemo.entiry.ShowContactsEvent;
-import cn.maxleap.chatdemo.entiry.ShowGroupEvent;
+import cn.maxleap.chatdemo.event.FriendCircleEvent;
+import cn.maxleap.chatdemo.event.LogOutEvent;
+import cn.maxleap.chatdemo.event.MessageEvent;
+import cn.maxleap.chatdemo.event.RecentTalkEvent;
+import cn.maxleap.chatdemo.event.ShowContactsEvent;
+import cn.maxleap.chatdemo.event.ShowGroupEvent;
 import cn.maxleap.chatdemo.fragment.BaseFragment;
 import cn.maxleap.chatdemo.fragment.FragmentFactory;
 import cn.maxleap.chatdemo.global.Contants;
@@ -48,13 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button       btn_group;
 
     private boolean isFirst = true;
-    private Button btn_cancle;
-    private Button btn_ok;
-    private EditText et_add_friend;
+    private Button          btn_cancle;
+    private Button          btn_ok;
+    private EditText        et_add_friend;
     private AddFriendDialog dialog;
 
     private CreateGroupDialog createGroupDialog;
-    private JoinGroupDialog joinGroupDialog;
+    private JoinGroupDialog   joinGroupDialog;
+    private RadioButton       rb_recentalk;
+    private BadgeView badgeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         UiUtils.setSystemBar(this);
         EventBus.getDefault().register(this);
         initView();
-        if(TextUtils.isEmpty(PrefUtils.getString(this,Contants.USERNAME,""))){
+        if (TextUtils.isEmpty(PrefUtils.getString(this, Contants.USERNAME, ""))) {
             initTitleForPersonFragmentFirst();
-        } else{
+        } else {
             setTitleForPersonFragment();
         }
     }
@@ -80,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLLButton = (LinearLayout) this.findViewById(R.id.ll_button);
         btn_friend = (Button) this.findViewById(R.id.btn_friend);
         btn_group = (Button) this.findViewById(R.id.btn_group);
+
+        rb_recentalk = (RadioButton) this.findViewById(R.id.rb_recenttalk);
         btn_friend.setSelected(true);
 
 
@@ -140,11 +148,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 1:
 
                 reSetTitle();
-                 if(TextUtils.isEmpty(s)){
-                     mLLButton.setVisibility(View.VISIBLE);
-                 } else{
-                     setTitleForContactsFragment();
-                 }
+                if (TextUtils.isEmpty(s)) {
+                    mLLButton.setVisibility(View.VISIBLE);
+                } else {
+                    setTitleForContactsFragment();
+                }
 
 
                 break;
@@ -159,13 +167,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 3:
 
                 reSetTitle();
-                if(TextUtils.isEmpty(s)){
+                if (TextUtils.isEmpty(s)) {
                     mCenterText.setVisibility(View.VISIBLE);
                     mCenterText.setText("朋友圈");
-                }  else{
+                } else {
                     setTitleForFriendCircleFragment();
                 }
-                 EventBus.getDefault().post(new FriendCircleEvent());
+                EventBus.getDefault().post(new FriendCircleEvent());
                 break;
             case 4:
 
@@ -188,13 +196,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setTitleForContactsFragment() {
 
-        if(btn_friend.isSelected()){
+        if (btn_friend.isSelected()) {
             reSetTitle();
             mLLButton.setVisibility(View.VISIBLE);
             mRightText.setVisibility(View.VISIBLE);
             mRightText.setText("添加好友");
             mRightText.setTag(mRightText.getText().toString().trim());
-        }else{
+        } else {
             reSetTitle();
             mLLButton.setVisibility(View.VISIBLE);
             mRightText.setVisibility(View.VISIBLE);
@@ -240,14 +248,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.main_left_login:
 
-                if("登录".equals(tag)){
+                if ("登录".equals(tag)) {
                     login();
-                } else if("加入群组".equals(tag)){
+                } else if ("加入群组".equals(tag)) {
 
                     // TODO: 16/7/13
 
                     showJoinGroupDialog();
-                     Toast.makeText(getApplicationContext(),"加入群组",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "加入群组", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.main_left_regist:
@@ -257,27 +265,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if ("其他登录".equals(tag)) {
                     otherWayLogin();
-                } else  if ("退出登录".equals(tag)){
+                } else if ("退出登录".equals(tag)) {
                     MLUser.logOut();
                     initTitleForPersonFragmentFirst();
-                    PrefUtils.putString(this, Contants.USERNAME,"");
+                    PrefUtils.putString(this, Contants.USERNAME, "");
                     EventBus.getDefault().postSticky(new LogOutEvent());
-                }  else if("添加好友".equals(tag)){
+
+                    //badgeView.setVisibility(View.GONE);
+
+                } else if ("添加好友".equals(tag)) {
 
                     showAddFriendDialog();
 
                     // TODO: 16/7/12
-                    Toast.makeText(getApplicationContext(),"添加好友",Toast.LENGTH_SHORT).show();
-                } else if("创建群组".equals(tag)){
+                    Toast.makeText(getApplicationContext(), "添加好友", Toast.LENGTH_SHORT).show();
+                } else if ("创建群组".equals(tag)) {
                     // TODO: 16/7/12
                     showCreateGroupDialog();
-                    Toast.makeText(getApplicationContext(),"创建群组",Toast.LENGTH_SHORT).show();
-                } else if("发布说说".equals(tag)){
+                    Toast.makeText(getApplicationContext(), "创建群组", Toast.LENGTH_SHORT).show();
+                } else if ("发布说说".equals(tag)) {
                     // TODO: 16/7/12
-                    Toast.makeText(getApplicationContext(),"发布说说",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "发布说说", Toast.LENGTH_SHORT).show();
 
-                   //startActivity(new Intent(getApplicationContext(),ShuoShuoActivity.class));
-                   startActivity(new Intent(getApplicationContext(), ShuoActivity.class));
+                    //startActivity(new Intent(getApplicationContext(),ShuoShuoActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ShuoActivity.class));
                 }
                 break;
             case R.id.btn_friend:
@@ -288,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_group.setSelected(false);
 
                 //MLUser currentUser = MLUser.getCurrentUser();
-                if(!TextUtils.isEmpty(PrefUtils.getString(MainActivity.this, Contants.USERNAME, ""))){
+                if (!TextUtils.isEmpty(PrefUtils.getString(MainActivity.this, Contants.USERNAME, ""))) {
                     setTitleForContactsFragment();
                     EventBus.getDefault().postSticky(new ShowContactsEvent());
                 }
@@ -313,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setTitleForContactsFragment();
                     EventBus.getDefault().postSticky(new ShowGroupEvent());
                 }*/
-                if(!TextUtils.isEmpty(PrefUtils.getString(MainActivity.this, Contants.USERNAME, ""))){
+                if (!TextUtils.isEmpty(PrefUtils.getString(MainActivity.this, Contants.USERNAME, ""))) {
                     setTitleForContactsFragment();
                     EventBus.getDefault().postSticky(new ShowGroupEvent());
                 }
@@ -406,6 +417,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         //MLUser.logOut();
+        count=0;
     }
 
     @Override
@@ -414,5 +426,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("main得到的信息");
 
     }
+
+    private String current_name = "";
+    private int    count        = 0;
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void recentMessageFromContactsFragmenr(RecentTalkEvent event) {
+        count = 1;
+        current_name = event.name;
+        if (!current_name.equals(event.name)){
+             count++;
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+      /*  badgeView = new BadgeView(this);
+       badgeView.setTargetView(mGroup);
+        badgeView.setBadgeGravity(Gravity.CENTER_HORIZONTAL);
+        if(count==0){
+            badgeView.setVisibility(View.GONE);
+        }
+        badgeView.setBadgeCount(count);*/
+    }
+
+
 
 }

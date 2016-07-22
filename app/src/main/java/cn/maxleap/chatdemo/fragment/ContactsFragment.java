@@ -19,9 +19,10 @@ import cn.maxleap.chatdemo.adapter.ContactsFragmentAdapter;
 import cn.maxleap.chatdemo.adapter.ContactsFragmentGroupAdapter;
 import cn.maxleap.chatdemo.bean.ContactsBean;
 import cn.maxleap.chatdemo.bean.GroupBean;
-import cn.maxleap.chatdemo.entiry.LogOutEvent;
-import cn.maxleap.chatdemo.entiry.ShowContactsEvent;
-import cn.maxleap.chatdemo.entiry.ShowGroupEvent;
+import cn.maxleap.chatdemo.event.LogOutEvent;
+import cn.maxleap.chatdemo.event.RecentTalkEvent;
+import cn.maxleap.chatdemo.event.ShowContactsEvent;
+import cn.maxleap.chatdemo.event.ShowGroupEvent;
 import cn.maxleap.chatdemo.global.Contants;
 import cn.maxleap.chatdemo.utils.PrefUtils;
 
@@ -56,6 +57,8 @@ public class ContactsFragment extends BaseFragment {
                 Intent intent = new Intent(getActivity(), ChatUiActivity2.class);
                 intent.putExtra("name",ls_contacts.get(position).username);
                 startActivity(intent);
+                EventBus.getDefault().postSticky(new RecentTalkEvent(ls_contacts.get(position).username,null));
+
             }
         });
 
@@ -118,8 +121,6 @@ public class ContactsFragment extends BaseFragment {
          mListView_contacts.setVisibility(View.GONE);
           line.setVisibility(View.GONE);
     }
-
-
 
 
     @Override

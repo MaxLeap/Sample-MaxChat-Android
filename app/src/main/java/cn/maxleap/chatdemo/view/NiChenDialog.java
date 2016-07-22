@@ -17,8 +17,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import cn.maxleap.chatdemo.R;
-import cn.maxleap.chatdemo.entiry.NiChenBackDialogEvent;
-import cn.maxleap.chatdemo.entiry.NiChenEvent;
+import cn.maxleap.chatdemo.event.NiChenBackDialogEvent;
+import cn.maxleap.chatdemo.event.NiChenEvent;
 import cn.maxleap.chatdemo.global.Contants;
 import cn.maxleap.chatdemo.utils.DeviceInfo;
 import cn.maxleap.chatdemo.utils.PrefUtils;

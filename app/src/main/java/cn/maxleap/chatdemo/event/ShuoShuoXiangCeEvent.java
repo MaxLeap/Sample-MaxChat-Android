@@ -1,4 +1,4 @@
-package cn.maxleap.chatdemo.entiry;
+package cn.maxleap.chatdemo.event;
 
 public class ShuoShuoXiangCeEvent {
     public  String path;

@@ -22,8 +22,6 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
 
-        System.out.println("11111");
-
         MaxLeap.initialize(this,appId,clientId,MaxLeap.REGION_CN);
         MLQQUtils.initialize(qqId);
         MLWeiboUtils.initialize(weiboId,weiboSecretId);
